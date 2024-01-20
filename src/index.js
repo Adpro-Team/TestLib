@@ -21,7 +21,7 @@ function getQuestion(data){
   let chioceArea = document.getElementById('a');
   let dataLength = getJsonArrayLength(data.data);
   let randomQ = Math.floor(Math.random()*dataLength);
-  document.getElementById('q').innerText = data.data[randomQ].Q;
+  document.getElementById('q').innerHTML = data.data[randomQ].Q;
   let length = getJsonArrayLength(data.data[randomQ].choice);
   let randomPosition = Math.round(Math.random()*length);
   let j = 0;
