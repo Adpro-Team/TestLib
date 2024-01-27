@@ -57,15 +57,21 @@ function generate() {
   URL.revokeObjectURL(downloadURL);
 };
 
-function readLib(){
-  const objFile = document.getElementById('upload');
-  if(objFile.value === ''){
-      alert('请选择题库文件');
-      return
-  }
-  const libFile = objFile.files;
+function readLib(type = false){
   const reader = new FileReader();
-  reader.readAsText(libFile[0],'UTF-8');
+  if(type == false){
+    const objFile = document.getElementById('upload');
+    if(objFile.value === ''){
+        alert('请选择题库文件');
+        return
+    }
+    reader.readAsText(objFile.files[0],'UTF-8');
+  }
+  else{
+    fetch('../lib/yylj-offical.json5').then(data=>data.blob()).then(result=>{
+      reader.readAsText(result,'UTF-8');
+    });
+  }
   reader.onload = function(e){
     let data = e.target.result;
     data = JSON5.parse(data);

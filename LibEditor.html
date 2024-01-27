@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="info">
-            <span id="main">当前编辑器版本：1.0.0(8)</span><br>
+            <span id="main">编辑器版本：1.0.1(9)</span><br>
         </div>
         <div id="editArea">
             <div>
@@ -36,7 +36,7 @@
                 <input type="text" id="versionCode" placeholder="更新时版本号大的会覆盖小的">
             </div>
             <div>
-                <textarea id="data" cols="50" rows="5" placeholder="问题,正确答案,选项1[,选项2,选项3...]&#10;正确答案不需要包含在选项中，选项可以添加多个，但至少要有1个&#10;换行以添加多个问题"></textarea>
+                <textarea id="data" cols="70" rows="5" placeholder="问题,正确答案,选项1[,选项2,选项3...]&#10;正确答案不需要包含在选项中，选项可以添加多个，但至少要有1个&#10;问题、正确答案、选项间以英文逗号隔开，中间无空格。请不要在问题、正确答案、选项中使用英文逗号！&#10;换行以添加多个问题"></textarea>
             </div>
             <div>
                 <span>正确提示：</span>
@@ -48,7 +48,8 @@
             </div>
             <script src="https://cdn.bootcdn.net/ajax/libs/json5/2.2.3/index.min.js"></script>
             <script src="./src/generate.js"></script>
-            <button id="submit" onclick="generate();">生成题库</button>
+            <button id="generate" onclick="generate();">生成题库</button>
+            <button id="example" onclick="readLib(true);">查看示例</button>
             <div>
                 <span>读取题库：</span>
                 <input id="upload" type="file" accept=".json5" onchange="readLib();">
