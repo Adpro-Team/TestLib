@@ -1,12 +1,14 @@
-var libList = ['yylj-offical'];
+var libList = ['yylj-offical','dxzss-offical'];
 var libData = [];
-fetch('../lib/yylj-offical.json5').then(data=>data.blob()).then(blob=>{
-  const initReader = new FileReader();
-  initReader.readAsText(blob,'UTF-8');
-  initReader.onload = function(e){
-    let script = e.target.result;
-    libData.push(script);
-  };
+libList.forEach((l) => {
+  fetch(`../lib/${l}.json5`).then(data=>data.blob()).then(blob=>{
+    const initReader = new FileReader();
+    initReader.readAsText(blob,'UTF-8');
+    initReader.onload = function(e){
+      let script = e.target.result;
+      libData.push(script);
+    };
+  });
 });
 
 function getJsonArrayLength(jsonArray){
